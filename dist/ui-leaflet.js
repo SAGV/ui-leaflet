@@ -1,5 +1,5 @@
 /*!
-*  ui-leaflet 1.0.0 2015-12-20
+*  ui-leaflet 1.0.0 2016-01-04
 *  ui-leaflet - An AngularJS directive to easily interact with Leaflet maps
 *  git: https://github.com/angular-ui/ui-leaflet
 */
@@ -2194,6 +2194,8 @@ angular.module('ui-leaflet').factory('leafletMapDefaults', ["$q", "leafletHelper
 
 'use strict';
 
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 angular.module('ui-leaflet').service('leafletMarkersHelpers', ["$rootScope", "$timeout", "leafletHelpers", "leafletLogger", "$compile", "leafletGeoJsonHelpers", "leafletWatchHelpers", function ($rootScope, $timeout, leafletHelpers, leafletLogger, $compile, leafletGeoJsonHelpers, leafletWatchHelpers) {
     var isDefined = leafletHelpers.isDefined,
         defaultTo = leafletHelpers.defaultTo,
@@ -2548,7 +2550,7 @@ angular.module('ui-leaflet').service('leafletMarkersHelpers', ["$rootScope", "$t
                 } else {
                     _manageOpenLabel(marker, markerData);
                 }
-            } else if (!('label' in markerData && !('message' in markerData.label))) {
+            } else if (!('label' in markerData && _typeof(markerData.label) === Object && !('message' in markerData.label))) {
                 if (angular.isFunction(marker.unbindLabel)) {
                     marker.unbindLabel();
                 }

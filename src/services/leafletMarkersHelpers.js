@@ -353,7 +353,7 @@ angular.module('ui-leaflet').service('leafletMarkersHelpers', function ($rootSco
                     } else {
                         _manageOpenLabel(marker, markerData);
                     }
-                } else if (!('label' in markerData && !('message' in markerData.label))) {
+                } else if (!('label' in markerData && typeof markerData.label === Object && !('message' in markerData.label))) {
                     if (angular.isFunction(marker.unbindLabel)) {
                         marker.unbindLabel();
                     }
